@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library App</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="books">
+    <div class="modal">
+        <form class="addBookForm" action="" method="POST">
+            <div>Title:</div>
+            <div><input type="text" id="title"></div>
+            <div>Author:</div>
+            <div><input type="text" id="author"></div>
+            <div>Pages:</div>
+            <div><input type="number" id="pages"></div>
+            <div>Have you read it?</div>
+            <div><input type="checkbox" id="readStatus"></div>
+            <div><button type="submit">Submit</button></div>
+            <div><button type="button" onclick="cancelForm()">Cancel</button></div>
+        </form>
     </div>
-    <button onClick="Book()">Add</button>
-    <button onClick="display()">display</button>
+    <div class="content">
+        <button onClick="openForm()" class="addBtn">Add</button>
+        <div class="books">
+        </div>
+    </div>
 </body>
 </html>

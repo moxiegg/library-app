@@ -1,4 +1,24 @@
 let myLibrary=[]
+let formModal=document.querySelector('.modal');
+let body=document.querySelector("body");
+let form=document.querySelector(".addBookForm");
+form.addEventListener("submit",function(e){
+    // console.log(e);
+    e.preventDefault();
+    author=document.querySelector("#author").value;
+    title=document.querySelector("#title").value;
+    pages=document.querySelector("#pages").value;
+    readStatus=document.querySelector("#readStatus").checked;
+    if(readStatus){
+        readStatus="Yes";
+    }else readStatus="No";
+    form.reset();
+    Book(author,title,pages,readStatus);
+})
+function cancelForm(){
+    formModal.classList.remove("disp");
+    body.classList.remove("darken");
+}
 function bookObj(author,title,pages,readStatus){
     this.author=author;
     this.title=title;
@@ -18,12 +38,14 @@ function removeBook(e){
     myLibrary.splice(index,1);
     display();
 }
-function Book(){
-    author="Eichiro Oda";
-    title="One Piece";
-    pages="100";
-    readStatus="No";
+function Book(author,title,pages,readStatus){
     myLibrary.push(new bookObj(author,title,pages,readStatus));
+    cancelForm();
+    display();
+}
+function openForm(){
+    formModal.classList.add('disp');
+    body.classList.add('darken');
 }
 function display(){
     let b=document.querySelector(".books");
@@ -34,24 +56,24 @@ function display(){
         card.className="card";
         ti=document.createElement("div");
         ti.textContent=ele.title;
-        card.appendChild(ti);
+        // card.appendChild(ti);
         au=document.createElement("div");
         au.textContent=ele.author;
-        card.appendChild(au);
+        // card.appendChild(au);
         pg=document.createElement("div");
         pg.textContent=ele.pages;
-        card.appendChild(pg);
+        // card.appendChild(pg);
         rs=document.createElement("div");
         rs.textContent=ele.readStatus;
         rs.setAttribute("data-bookNo",ind);
         rs.className="toggle";
         rs.addEventListener("click",toggleStatus);
-        card.appendChild(rs);
+        // card.appendChild(rs);
         rm=document.createElement("button");
         rm.textContent="Remove";
         rm.addEventListener("click",removeBook);
         rm.setAttribute("data-bookNo",ind);
-        card.appendChild(rm);
+        card.append(ti,au,pg,rs,rm);
         b.appendChild(card);
         ind=ind+1;
     })

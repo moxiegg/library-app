@@ -2,8 +2,18 @@ body{
     display:flex;
     justify-content: center;
     align-items: center;
-    height:100vh;    
+    margin:0;
+    height:100vh;
 }
+.content{
+    display:grid;
+    grid-template-rows: max-content,1fr;
+    gap:20px;
+}
+.addBtn{
+    justify-self: center;
+}
+
 .books{
     display:grid;
     grid-template-columns: repeat(3,1fr);
@@ -18,4 +28,33 @@ body{
 }
 .card .readStatus{
     justify-self: center;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    top: 10%;
+    left: 40%;
+    width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color:white;
+    text-align: center;
+    display:none;
+}
+.disp{
+    display:block;
+}
+.addBookForm{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    justify-items: right;
+    gap:20px;
+}
+
+.addBookForm div:nth-last-child(2){
+    justify-self: center;
+}
+.darken{
+    background:rgba(0, 0, 0, 0.5);    
 }
