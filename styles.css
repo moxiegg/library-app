@@ -1,0 +1,22 @@
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;    
+}
+.books{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:50px;
+}
+.card{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(4,1fr);
+    width:max-content;
+    gap:5px;
+}
+.card .readStatus{
+    grid-column: 1/3;
+    justify-self: center;
+}
